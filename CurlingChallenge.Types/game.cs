@@ -13,6 +13,13 @@ namespace CurlingChallenge
         private readonly double planeHeight;
         private readonly int diskRadius;
         public List<CurlingRock> disksList { get; set; }
+        /// <summary>
+        /// Class constructor
+        /// </summary>
+        /// <param name="planewidth"></param>
+        /// <param name="planeheight"></param>
+        /// <param name="diskradius"></param>
+        /// <param name="diskslist"></param>
         public game(int planewidth, double planeheight, int diskradius, List<CurlingRock> diskslist)
         {
             planeWidth = planewidth;   
@@ -20,7 +27,9 @@ namespace CurlingChallenge
             diskRadius = diskradius;   
             disksList = diskslist;
         }
-
+        /// <summary>
+        /// Processing disks from start to end positions
+        /// </summary>
         public void PlayGame()
         {
             foreach (CurlingRock disk in disksList)
@@ -28,7 +37,11 @@ namespace CurlingChallenge
                 disk.DoMove(SlideToTopAndCheck(disk));//find the stop coordinates display the disk accordingly
             }
         }
-
+        /// <summary>
+        /// Calculate the Y position of the disk where is collides with other disks or going to the top
+        /// </summary>
+        /// <param name="disk"></param>
+        /// <returns></returns>
         private Coords SlideToTopAndCheck(CurlingRock disk)
         {
             Coords result = new(disk.startPos.X, diskRadius);
@@ -57,7 +70,12 @@ namespace CurlingChallenge
 
             return result;
         }
-
+        /// <summary>
+        /// not in use
+        /// </summary>
+        /// <param name="c1"></param>
+        /// <param name="c2"></param>
+        /// <returns></returns>
         private double GetDistance(Coords c1, Coords c2)
         {
             return Math.Sqrt(Math.Pow(c1.X - c2.X, 2) + Math.Pow(c1.Y - c2.Y, 2));

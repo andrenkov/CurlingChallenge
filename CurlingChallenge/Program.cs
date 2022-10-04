@@ -1,4 +1,8 @@
-﻿using CurlingChallenge;
+﻿///
+/// This is a Console app which takes two inputs from a user, calls the game class to calculate the positions of the disks 
+/// and prints the result  
+///
+using CurlingChallenge;
 using CurlingChallenge.Models;
 
 int width = 1000;
@@ -15,53 +19,48 @@ if (!ValiadateInput())
     Console.WriteLine("Invalid input");
     return;
 }
-
+///
+///Builds the list of random X coordinates
+///
 Random randNum = new Random();
 int[] xCoordinates = Enumerable
     .Repeat(0, n)
     .Select(i => randNum.Next(r, width))
     .ToArray();
-
-//for Unit Test
-//n = 5;
-//r = 100;
-//int[] xCoordinates = new[] { 100, 300, 500, 700, 900};//100, 100, 100, 100, 100
-//int[] xCoordinates = new[] { 100, 100, 100, 100, 100 };//100, 300, 500, 700, 900
-//int[] xCoordinates = new[] { 100, 100, 100, 200, 200 };//100, 300, 500, 673.2050807568877, 873.2050807568877
-//int[] xCoordinates = new[] { 100, 100, 100, 300, 300 };//100, 300, 500, 100, 300
-//int[] xCoordinates = new[] { 100, 100, 100, 300, 350 };//100, 300, 500, 100, 293.64916731037084
-//int[] xCoordinates = new[] { 100, 150, 200, 250, 300 };//100, 293.64916731037084, 487.2983346207417, 680.9475019311126, 874.5966692414834
-//int[] xCoordinates = new[] { 100, 150, 200, 250, 700 };//100, 293.64916731037084, 487.2983346207417, 680.9475019311126, 100
-
-
+///
+///Checks min-max
+///
 bool ValiadateInput()
 {
     return (n >= 1) && (r > 0) && (r < 1000) && (n < 1000);
 }
 
-Console.WriteLine(string.Join(", ", xCoordinates));
-
+///
+///Initializing the list of Disks with random X
+///
 List<CurlingRock> disks = new();
-
 foreach (int diskX in xCoordinates)
 {
 
     Coords startCoords = new(diskX, height);
     CurlingRock CurlDisk = new(r, startCoords);
-    disks.Add(CurlDisk);//set end position and display in UI
+    disks.Add(CurlDisk);
 }
-
+///
+///game is the class to calculate the positions of the disks moving them to Y=0
+///
 game g = new game(width, height, r, disks);
 g.PlayGame();
-
+///
+///Printing the result
+///
 double[] result = g.disksList
         .Select(disk => disk.endPos.Y)
         .ToArray();
 Console.WriteLine(string.Join(", ", result));
 
 
-
 //////////////////////////////////////////////////////////////////////////
-Console.Write("\nPress any key to continue... ");
-Console.ReadLine();
+//Console.Write("\nPress any key to continue... ");
+//Console.ReadLine();
 

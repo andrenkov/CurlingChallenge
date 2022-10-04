@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CurlingChallenge.Models
+﻿namespace CurlingChallenge.Models
 {
-    public class PlainRock : IStoneMoveBehavour
+    public class PlainRock : IStoneMoveBehavior
     {
+        /// <summary>
+        /// PlainRock added for future use
+        /// </summary>
         public void DoMove()
         {
             Console.WriteLine("Rolling plain rock");

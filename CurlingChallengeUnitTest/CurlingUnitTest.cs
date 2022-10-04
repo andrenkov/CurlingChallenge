@@ -1,11 +1,16 @@
 using CurlingChallenge;
 using CurlingChallenge.Models;
-using Xunit;
 
 namespace CurlingChallengeUnitTest
 {
+    /// <summary>
+    /// Basic Unit Test class to validate two cases (see below)
+    /// </summary>
     public class CurlingUnitTest
     {
+        /// <summary>
+        /// This disk should be at top line
+        /// </summary>
         [Fact]
         public void TestGameTopDisk()
         {
@@ -16,7 +21,7 @@ namespace CurlingChallengeUnitTest
             int r = 100;
             double expected = 100;
 
-            int[] xCoordinates = new[] { 100, 150, 200, 250, 700 };//100, 293.64916731037084, 487.2983346207417, 680.9475019311126, 100
+            int[] xCoordinates = new[] { 100, 150, 200, 250, 700 };
             List<CurlingRock> disks = new();
 
             foreach (int diskX in xCoordinates)
@@ -36,6 +41,9 @@ namespace CurlingChallengeUnitTest
             Assert.Equal(expected, g.disksList[0].endPos.Y);
         }
 
+        /// <summary>
+        /// This tests a collision with other disks situation
+        /// </summary>
         [Fact]
         public void TestGameDiskCollide()
         {
@@ -46,7 +54,7 @@ namespace CurlingChallengeUnitTest
             int r = 100;
             double expected = 293.64916731037084;
 
-            int[] xCoordinates = new[] { 100, 150, 200, 250, 700 };//100, 293.64916731037084, 487.2983346207417, 680.9475019311126, 100
+            int[] xCoordinates = new[] { 100, 150, 200, 250, 700 };
             List<CurlingRock> disks = new();
 
             foreach (int diskX in xCoordinates)

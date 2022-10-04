@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CurlingChallenge.Models
+﻿namespace CurlingChallenge.Models
 {
+    /// <summary>
+    /// Simple object to store x and y where x is read only
+    /// </summary>
     public struct Coords
     {
         public Coords(double x, double y)
