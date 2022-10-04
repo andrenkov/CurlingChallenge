@@ -55,7 +55,7 @@ game g = new game(width, height, r, disks);
 g.PlayGame();
 
 double[] result = g.disksList
-        .Select(disk => disk._end.Y)
+        .Select(disk => disk.endPos.Y)
         .ToArray();
 Console.WriteLine(string.Join(", ", result));
 

@@ -31,12 +31,12 @@ namespace CurlingChallenge
 
         private Coords SlideToTopAndCheck(CurlingRock disk)
         {
-            Coords result = new(disk._start.X, diskRadius);
+            Coords result = new(disk.startPos.X, diskRadius);
 
             //select all disk in the corridor
-            List<CurlingRock> corridorDisks = disksList.Where(d => (d._end.Y > 0) 
-                          && d._start.X > (disk._start.X - diskRadius*2) && (d._start.X < (disk._start.X + diskRadius*2)))
-                .OrderByDescending(d => d._end.Y)//OrderByDescending
+            List<CurlingRock> corridorDisks = disksList.Where(d => (d.endPos.Y > 0) 
+                          && d.startPos.X > (disk.startPos.X - diskRadius*2) && (d.startPos.X < (disk.startPos.X + diskRadius*2)))
+                .OrderByDescending(d => d.endPos.Y)//OrderByDescending
                 .ToList();
             //if nothing in the corridor then move to the end 
             if (corridorDisks.Count == 0)
@@ -48,8 +48,8 @@ namespace CurlingChallenge
                 CurlingRock rock = corridorDisks.First();//the closest one
                 if (true)// (GetDistance(rock._end, disk._end) < (diskRadius * 2))
                 {
-                    double horriz = Math.Abs(rock._end.X - disk._start.X);
-                    double vert = rock._end.Y + Math.Sqrt(Math.Pow(diskRadius*2, 2) - Math.Pow(horriz, 2));
+                    double horriz = Math.Abs(rock.endPos.X - disk.startPos.X);
+                    double vert = rock.endPos.Y + Math.Sqrt(Math.Pow(diskRadius*2, 2) - Math.Pow(horriz, 2));
 
                     result.Y = vert;
                 }

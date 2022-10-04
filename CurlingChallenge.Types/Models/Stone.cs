@@ -10,7 +10,7 @@ namespace CurlingChallenge.Models
     public abstract class Stone
     {
         public int _radius { get; set; }
-        public int _weigth { get; set; }
+        public int _weigth { get; set; }//future use
         public IStoneMoveBehavour movingBehavour { get; set; }
 
         public Stone(int rad, int weight = 0)

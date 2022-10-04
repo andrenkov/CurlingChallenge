@@ -33,7 +33,7 @@ namespace CurlingChallengeUnitTest
             g.PlayGame();
 
             //Assert
-            Assert.Equal(expected, g.disksList[0]._end.Y);
+            Assert.Equal(expected, g.disksList[0].endPos.Y);
         }
 
         [Fact]
@@ -63,7 +63,7 @@ namespace CurlingChallengeUnitTest
             g.PlayGame();
 
             //Assert
-            Assert.Equal(expected, g.disksList[1]._end.Y);
+            Assert.Equal(expected, g.disksList[1].endPos.Y);
         }
     }
 }
